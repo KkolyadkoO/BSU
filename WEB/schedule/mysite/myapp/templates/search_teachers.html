@@ -1,0 +1,44 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/authentication.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'template/css/login.css' %}">
+
+    <title>Authentication</title>
+  </head>
+  <body>
+
+  <div class="centered-form">
+    <div class="container">
+      <div class="card">
+        <div class="card-header text-center">
+          <h3>Поиск</h3>
+        </div>
+        <div class="card-body">
+          <form action="{% url 'teachers_search' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="login">фамилия преподователя</label>
+              <input type="text" id="login" class="form-control" placeholder="Введите фамилия преподователя" name="last_name">
+            </div>
+            {% if error %}
+            <div class="form-group">
+              <small class="from-text">{{error}}</small>
+            </div>
+            {% endif %}
+            <button type="submit" class="btn btn-block">Поиск</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="{% static 'js/jquery.js' %}" ></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" ></script>
+  </body>
+</html>

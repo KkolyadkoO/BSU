@@ -1,0 +1,61 @@
+body {
+    background-color: #f8f9fa;
+  }
+  .centered-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+  }
+  .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  .card-header {
+    background-color: #b9c6d7;
+    color: #000000;
+    border-radius: 10px 10px 0 0;
+
+  }
+  .btn-block{
+    background-color: #b9c6d7;
+    border: solid #b9c6d7;
+    color: #000000;
+  }
+  .btn-block:hover{
+    background-color: rgba(159, 174, 192, 0.582);
+    border: solid #b9c6d7;
+    color: #000000;
+  }
+  .btn-block:active{
+    background-color: rgba(159, 174, 192, 0.582);
+    border: solid #b9c6d7;
+    color: #000000;
+  }
+  .btn-block:focus {
+   border-color: rgba(159, 174, 192, 0.582);
+   box-shadow: 0 0 0 0.2rem rgba(159, 174, 192, 0.582);
+  }
+  small{
+    color: rgba(250, 88, 88, 0.904);
+  }
+
+  #user_block{
+    background-color: #b9c6d7;
+    border: solid #b9c6d7;
+    color: #000000;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  #sing_out_button{
+    background-color: #ee4a4a;
+    border: solid #ee4a4a;
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  
+  

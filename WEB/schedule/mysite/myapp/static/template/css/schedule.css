@@ -1,0 +1,87 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #f0f0f0;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #b9c6d7;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#sing_out_but{
+    padding: 14px;
+    background-color: rgb(247, 65, 65);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin-top:20vh;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+td {
+    background-color: #fff;
+}
+tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+tr:hover td {
+    background-color: #f4f4f4;
+}
+
+.teacher{
+    font-size: 10pt;
+}
+
+.audi{
+    font-size: 10pt;
+    text-align: center;
+    font-weight: bold;
+}
+
+.class{
+    background-color: #e4eaf3;
+    border-radius: 5px;
+    border-left: solid red;
+    padding: 3px;
+    margin: 5px;
+}
+
+.subgroup{
+    font-size: 9pt;
+    text-align: end;
+    margin-right: 7px;
+    color: rgba(70, 69, 69, 0.671);
+}
+
+#info{
+    outline: none;
+    cursor: default;
+}
+#info:hover{
+    outline: none;
+    cursor: default;
+}
+

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/authentication.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="https://kit.fontawesome.com/0df0ee52f2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'template/css/schedule.css' %}">
+<title>Schedule</title>
+</head>
+<body>
+
+<div class="header">
+    <a href="{% url 'schedule' login=current_student.login %}">
+        <button class="button">Вернуться к рассписанию</button>
+    </a>
+    <div>
+        <button class="button" id="info">{{current_student.last_name}} {{current_student.first_name}} {{current_student.group_num}}</button>
+        <a href="{% url 'check_student' %}"><i class="fa-solid fa-right-from-bracket button" id="sing_out_but"></i></a>
+    </div>
+</div>
+
+<table>
+    <tr>
+        <th></th>
+        <th>Понедельник</th>
+        <th>Вторник</th>
+        <th>Среда</th>
+        <th>Четверг</th>
+        <th>Пятница</th>
+        <th>Суббота</th>
+        <!-- Добавьте столбцы для всех уроков, которые есть в вашем расписании -->
+    </tr>
+    <tr>
+        <td>9.00-10.20</td>
+        {% for subject in first%}
+        {% if subject %}
+        <td>
+            <div class="class">{{subject.subject}}<br> <div class="teacher">{{subject.teacher}}</div><div class="audi">{{subject.classroom}}</div><div class="subgroup">
+                {{subject.subgroup}}.</div></div>
+<!--            <div class="class">Web-дизайн<br> <div class="teacher">Лукьянович И.Р.</div><div class="audi">415</div></div>-->
+        </td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+
+
+    </tr>
+    <tr>
+        <td>10.30-11.50</td>
+        {% for subject in second%}
+         {% if subject %}
+        <td>
+            <div class="class">{{subject.subject}}<br> <div class="teacher">{{subject.teacher}}</div><div class="audi">{{subject.classroom}}</div><div class="subgroup">
+                {{subject.subgroup}}.</div></div>
+<!--            <div class="class">Web-дизайн<br> <div class="teacher">Лукьянович И.Р.</div><div class="audi">415</div></div>-->
+        </td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+
+    </tr>
+    <tr>
+        <td>12.00-13.20</td>
+        {% for subject in third%}
+         {% if subject %}
+        <td>
+            <div class="class">{{subject.subject}}<br> <div class="teacher">{{subject.teacher}}</div><div class="audi">{{subject.classroom}}</div><div class="subgroup">
+                {{subject.subgroup}}.</div></div>
+<!--            <div class="class">Web-дизайн<br> <div class="teacher">Лукьянович И.Р.</div><div class="audi">415</div></div>-->
+        </td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+
+    </tr>
+    <tr>
+        <td>13.40-15.00</td>
+        {% for subject in fourth%}
+         {% if subject %}
+        <td>
+            <div class="class">{{subject.subject}}<br> <div class="teacher">{{subject.teacher}}</div><div class="audi">{{subject.classroom}}</div><div class="subgroup">
+                {{subject.subgroup}}.</div></div>
+<!--            <div class="class">Web-дизайн<br> <div class="teacher">Лукьянович И.Р.</div><div class="audi">415</div></div>-->
+        </td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+
+    </tr>
+    <tr>
+        <td>15.10-16.30</td>
+        {% for subject in fifth%}
+         {% if subject %}
+        <td>
+            <div class="class">{{subject.subject}}<br> <div class="teacher">{{subject.teacher}}</div><div class="audi">{{subject.classroom}}</div><div class="subgroup">
+                {{subject.subgroup}}.</div></div>
+<!--            <div class="class">Web-дизайн<br> <div class="teacher">Лукьянович И.Р.</div><div class="audi">415</div></div>-->
+        </td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+
+    </tr>
+    <tr>
+        <td>16.40-18.00</td>
+        {% for subject in sixth%}
+         {% if subject %}
+        <td>
+            <div class="class">{{subject.subject}}<br> <div class="teacher">{{subject.teacher}}</div><div class="audi">{{subject.classroom}}</div><div class="subgroup">
+                {{subject.subgroup}}.</div></div>
+<!--            <div class="class">Web-дизайн<br> <div class="teacher">Лукьянович И.Р.</div><div class="audi">415</div></div>-->
+        </td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+
+    </tr>
+    <tr>
+        <td>18.20-19.40</td>
+        {% for subject in seventh%}
+        {% if subject %}
+        <td>
+            <div class="class">{{subject.subject}}<br> <div class="teacher">{{subject.teacher}}</div><div class="audi">{{subject.classroom}}</div><div class="subgroup">
+                {{subject.subgroup}}.</div></div>
+<!--            <div class="class">Web-дизайн<br> <div class="teacher">Лукьянович И.Р.</div><div class="audi">415</div></div>-->
+        </td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+
+    </tr>
+    <tr>
+        <td>19.50-21.10</td>
+        {% for subject in eighth%}
+         {% if subject %}
+        <td>
+            <div class="class">{{subject.subject}}<br> <div class="teacher">{{subject.teacher}}</div><div class="audi">{{subject.classroom}}</div><div class="subgroup">
+                {{subject.subgroup}}.</div></div>
+<!--            <div class="class">Web-дизайн<br> <div class="teacher">Лукьянович И.Р.</div><div class="audi">415</div></div>-->
+        </td>
+        {% else %}
+        <td></td>
+        {% endif %}
+        {% endfor %}
+
+    </tr>
+</table>
+    <script src="{% static 'js/jquery.js' %}" ></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" ></script>
+</body>
+</html>
