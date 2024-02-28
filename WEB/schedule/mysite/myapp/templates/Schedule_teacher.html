@@ -13,11 +13,8 @@
 <body>
 
 <div class="header">
-    <a href="{% url 'schedule' login=current_student.login %}">
-        <button class="button">Вернуться к рассписанию</button>
-    </a>
     <div>
-        <button class="button" id="info">{{current_student.last_name}} {{current_student.first_name}} {{current_student.group_num}}</button>
+        <button class="button" id="info">{{current_teachers.last_name}} {{current_teachers.first_name}}</button>
         <a href="{% url 'check_student' %}"><i class="fa-solid fa-right-from-bracket button" id="sing_out_but"></i></a>
     </div>
 </div>

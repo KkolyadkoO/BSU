@@ -16,10 +16,7 @@ def schedule(request, login):
     first_name = request.GET.get('first_name')
     group_num = request.GET.get('group_num')
 
-
-    # Получение всех студентов в группе
-
-    subjects = Subject.objects.filter(group_num = current_student.group_num)
+    subjects = Subject.objects.filter(group_num=current_student.group_num)
 
     first = []
     second = []
@@ -29,16 +26,14 @@ def schedule(request, login):
     sixth = []
     seventh = []
     eighth = []
-    first = postsort(subjects,1)
-    second = postsort(subjects,2)
-    third = postsort(subjects,3)
+    first = postsort(subjects, 1)
+    second = postsort(subjects, 2)
+    third = postsort(subjects, 3)
     fourth = postsort(subjects, 4)
     fifth = postsort(subjects, 5)
     sixth = postsort(subjects, 6)
     seventh = postsort(subjects, 7)
     eighth = postsort(subjects, 8)
-
-
 
     return render(request, 'schedule.html',
                   {'current_student': current_student, 'last_name': last_name, 'first_name': first_name,
@@ -62,10 +57,13 @@ def check_student(request):
             }
             return redirect('schedule', login=login)  # Передача аргумента login
         except Student.DoesNotExist:
-            error = 'Неверный логин или пароль.'
-            return render(request, 'login.html', {'error': error})
+            try:
+                current_teachers = Teacher.objects.get(login=login, password=password)
+                return redirect('view_teacher', last_name=current_teachers.last_name)
+            except Teacher.DoesNotExist:
+                error = 'Неверный логин или пароль.'
+                return render(request, 'login.html', {'error': error})
     return render(request, 'login.html')
-
 
 
 def teachers_search(request):
@@ -74,13 +72,14 @@ def teachers_search(request):
 
         try:
             teacher = Teacher.objects.get(last_name=last_name)
-            if last_name==teacher.last_name:
+            if last_name == teacher.last_name:
                 return redirect('view_teachers', last_name=teacher.last_name)
             else:
-                return render(request, 'search_teachers.html',{'error':'Преподаватель не найден'})
+                return render(request, 'search_teachers.html', {'error': 'Преподаватель не найден'})
         except Teacher.DoesNotExist:
             return render(request, 'search_teachers.html', {'error': 'Преподаватель не найден'})
     return render(request, 'search_teachers.html')
+
 
 def view_teachers(request, last_name):
     try:
@@ -124,10 +123,44 @@ def view_teachers(request, last_name):
     })
 
 
+def view_teacher(request, last_name):
+    try:
+        current_teachers = Teacher.objects.get(last_name=last_name)
+    except Teacher.DoesNotExist:
+        raise Http404("Преподаватель не найден")
 
+    # Assuming you have a way to determine the current student
+    # Replace the following line with your logic to get the current student
 
+    last_namee = current_teachers.last_name
+    first_namee = current_teachers.first_name
 
+    # Retrieve subjects for the current teacher
+    subjects = Subject.objects.filter(teacher=current_teachers)
 
+    # Sort subjects based on pairs
+    first = postsort(subjects, 1)
+    second = postsort(subjects, 2)
+    third = postsort(subjects, 3)
+    fourth = postsort(subjects, 4)
+    fifth = postsort(subjects, 5)
+    sixth = postsort(subjects, 6)
+    seventh = postsort(subjects, 7)
+    eighth = postsort(subjects, 8)
+
+    return render(request, 'Schedule_teacher.html', {
+        'current_teachers': current_teachers,
+        'last_name': last_namee,
+        'first_name': first_namee,
+        'first': first,
+        'second': second,
+        'third': third,
+        'fourth': fourth,
+        'fifth': fifth,
+        'sixth': sixth,
+        'seventh': seventh,
+        'eighth': eighth,
+    })
 
 
 def sort(day, pair, subjects):
@@ -135,7 +168,6 @@ def sort(day, pair, subjects):
     for subject in subjects:
         if subject.day == day and subject.number_of_class == pair:
             res.append(subject)
-
 
     if not res:
         res.append(None)
